@@ -57,7 +57,7 @@
             tools:ignore="HardcodedText" />
 
         <EditText
-            android:id="@+id/LastName"
+            android:id="@+id/lastName"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -96,7 +96,7 @@
             tools:ignore="HardcodedText" />
 
         <EditText
-            android:id="@+id/Email"
+            android:id="@+id/emailRegistered"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -116,7 +116,7 @@
             tools:ignore="HardcodedText" />
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/passwordRegistered"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
