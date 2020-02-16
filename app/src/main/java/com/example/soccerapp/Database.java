@@ -12,7 +12,7 @@ public class Database {
 
             try {
                 String driver = "com.mysql.jdbc.Driver";
-                String url = "jdbc:mysql://remotemysql.com:3306/fsmgvLmC5f";
+                String url = "jdbc:mysql://remotemysql.com:3306/fsmgvLmC5f?characterEncoding=latin1&useConfigs=maxPerformance";
                 String username = "fsmgvLmC5f";
                 String password = "dEEGdJA1v7";
                 Class.forName(driver);
@@ -48,6 +48,8 @@ public class Database {
                     String firstName = rs.getString("F_Name");
                     String lastName = rs.getString("L_Name");
                     String DOB = rs.getString("DOB");
+
+
 
                     testUser = new User(email, userPassword, firstName, lastName, DOB);
 

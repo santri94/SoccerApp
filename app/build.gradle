@@ -31,5 +31,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-    implementation files('libs/mysql-connector-java-8.0.19.jar')
+    implementation files('libs\\mysql-connector-java-3.0.17-ga-bin.jar')
 }

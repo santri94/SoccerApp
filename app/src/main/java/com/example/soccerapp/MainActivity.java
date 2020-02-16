@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -16,8 +17,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         getSupportActionBar().hide();
+
     }
+
 
     public void Login(View view) throws Exception {
         EditText username = (EditText) findViewById(R.id.email);
@@ -29,11 +34,14 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             try{
+
+
                 // Compare username and pass with the ones on your DB
                 Database.DatabaseFunctions myDatabase = new Database.DatabaseFunctions(); // connect to database
 
-                // returns a User object if there was a match if not then returns a null
+                // returns a User object if there was a match if not returns a null
                 User currentUser = myDatabase.GetUser(username.getText().toString(), pass.getText().toString());
+
 
                 if (currentUser != null) {
                     Toast.makeText(getApplicationContext(), "Hi "+ currentUser.F_Name, Toast.LENGTH_SHORT).show();
