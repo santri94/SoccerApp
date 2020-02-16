@@ -42,11 +42,14 @@ public class MainActivity extends AppCompatActivity {
                 // returns a User object if there was a match if not returns a null
                 User currentUser = myDatabase.GetUser(username.getText().toString(), pass.getText().toString());
 
-
+                // User login Successful
                 if (currentUser != null) {
-                    Toast.makeText(getApplicationContext(), "Hi "+ currentUser.F_Name, Toast.LENGTH_SHORT).show();
+                    username.setText(""); //clear email field
+                    pass.setText(""); // clear password field
+                    startActivity(new Intent(MainActivity.this, WelcomeActivity.class ));
 
                 }
+                // User login failed
                 else{
                     Toast.makeText(getApplicationContext(), "Wrong Email or password", Toast.LENGTH_SHORT).show();
                 }
