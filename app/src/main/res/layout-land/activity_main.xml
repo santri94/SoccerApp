@@ -81,7 +81,7 @@
             android:gravity="center"
             android:text="Register"
             android:textColor="#ffffff"
-            android:onClick="Login"
+            android:onClick="GoToRegisterPage"
             android:textStyle="bold" />
 
 
