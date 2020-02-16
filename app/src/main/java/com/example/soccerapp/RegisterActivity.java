@@ -24,10 +24,19 @@ public class RegisterActivity extends AppCompatActivity {
         EditText username = (EditText) findViewById(R.id.emailRegistered);
         EditText password = (EditText) findViewById(R.id.passwordRegistered);
 
+        // Some Validation for email, name and last name
+
+
         // validate that these fields are not empty
         if (name.getText().toString().isEmpty() || lastName.getText().toString().isEmpty() || DOB.getText().toString().isEmpty() || username.getText().toString().isEmpty()
                 || password.getText().toString().isEmpty()) {
             Toast.makeText(getApplicationContext(), "Please Enter all the information", Toast.LENGTH_SHORT).show();
+        }
+        else if(name.getText().toString().length() < 3 || name.getText().toString().length() >= 30){
+            Toast.makeText(getApplicationContext(), "Please Enter a correct name", Toast.LENGTH_SHORT).show();
+        }
+        else if(!username.getText().toString().contains("@")){
+            Toast.makeText(getApplicationContext(), "Please Enter a valid email address", Toast.LENGTH_SHORT).show();
         }
         else {
             try {
@@ -39,6 +48,8 @@ public class RegisterActivity extends AppCompatActivity {
                 String DateOfBirth = DOB.getText().toString();
                 //Creating Database Object
                 Database.DatabaseFunctions myDatabase = new Database.DatabaseFunctions();
+
+                // Insert your data to database then return to main activity
                 myDatabase.InsertUser(email,pass,F_Name,L_Name,DateOfBirth);
 
                 Toast.makeText(getApplicationContext(), "Registration Successful", Toast.LENGTH_SHORT).show();
@@ -49,7 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         }
 
-        // Insert your data to database then return to main activity
+
 
 
     }
