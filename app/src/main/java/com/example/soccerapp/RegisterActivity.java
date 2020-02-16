@@ -15,7 +15,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
     }
 
-    public void Register(View view){
+    public void Register(View view) throws Exception{
         // Making sure all the data was entered
         EditText name = (EditText) findViewById(R.id.name);
         EditText lastName = (EditText) findViewById(R.id.lastName);
@@ -29,9 +29,23 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please Enter all the information", Toast.LENGTH_SHORT).show();
         }
         else {
-            // save Information on DB then return to main window
-            Toast.makeText(getApplicationContext(), "Registration Successful", Toast.LENGTH_SHORT).show();
-            finish();
+            try {
+                // save Information on DB then return to main window
+                String email = username.getText().toString();
+                String pass = password.getText().toString();
+                String F_Name = name.getText().toString();
+                String L_Name = lastName.getText().toString();
+                String DateOfBirth = DOB.getText().toString();
+                //Creating Database Object
+                Database.DatabaseFunctions myDatabase = new Database.DatabaseFunctions();
+                myDatabase.InsertUser(email,pass,F_Name,L_Name,DateOfBirth);
+
+                Toast.makeText(getApplicationContext(), "Registration Successful", Toast.LENGTH_SHORT).show();
+                finish();
+            }catch (Exception e){
+                System.out.println(e);
+            }
+
         }
 
         // Insert your data to database then return to main activity

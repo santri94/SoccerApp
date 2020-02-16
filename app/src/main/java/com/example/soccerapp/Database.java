@@ -73,6 +73,21 @@ public class Database {
 
         }
 
+        public void InsertUser(String email, String pass, String F_Name, String L_Name, String DOB) throws Exception{
+            try {
+                Statement stmt = null;
+                Connection conn = getConnection();
+                String query = "INSERT INTO USERR(Email, Pass, F_Name, L_Name, DOB) VALUES ('"+email+"','"+pass+"','"+F_Name+"','"+L_Name+"','"+DOB+"')";
+
+                stmt = conn.createStatement();
+                stmt.executeUpdate(query);
+            }catch (Exception e){
+                System.err.println(e);
+            }
+
+
+        }
+
 
 
 
