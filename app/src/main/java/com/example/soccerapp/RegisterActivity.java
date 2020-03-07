@@ -1,6 +1,7 @@
 package com.example.soccerapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.content.SharedPreferences;
 
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +17,7 @@ public class RegisterActivity extends AppCompatActivity {
         getSupportActionBar().hide();
     }
 
-    public void Register(View view) throws Exception{
+    public void Register(View view) {
         // Making sure all the data was entered
         EditText name = (EditText) findViewById(R.id.name);
         EditText lastName = (EditText) findViewById(R.id.lastName);
@@ -24,8 +25,13 @@ public class RegisterActivity extends AppCompatActivity {
         EditText username = (EditText) findViewById(R.id.emailRegistered);
         EditText password = (EditText) findViewById(R.id.passwordRegistered);
 
-        // Some Validation for email, name and last name
+        //Testing SharedPreferences
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+        SharedPreferences.Editor editor = pref.edit();
 
+        // Some Validation for email, name and last name
+        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        String emailTmp = username.getText().toString();
 
         // validate that these fields are not empty
         if (name.getText().toString().isEmpty() || lastName.getText().toString().isEmpty() || DOB.getText().toString().isEmpty() || username.getText().toString().isEmpty()
@@ -35,28 +41,17 @@ public class RegisterActivity extends AppCompatActivity {
         else if(name.getText().toString().length() < 3 || name.getText().toString().length() >= 30){
             Toast.makeText(getApplicationContext(), "Please Enter a correct name", Toast.LENGTH_SHORT).show();
         }
-        else if(!username.getText().toString().contains("@")){
+        else if(!emailTmp.matches(regex)){
             Toast.makeText(getApplicationContext(), "Please Enter a valid email address", Toast.LENGTH_SHORT).show();
         }
         else {
-            try {
-                // save Information on DB then return to main window
-                String email = username.getText().toString();
-                String pass = password.getText().toString();
-                String F_Name = name.getText().toString();
-                String L_Name = lastName.getText().toString();
-                String DateOfBirth = DOB.getText().toString();
-                //Creating Database Object
-                Database.DatabaseFunctions myDatabase = new Database.DatabaseFunctions();
 
-                // Insert your data to database then return to main activity
-                myDatabase.InsertUser(email,pass,F_Name,L_Name,DateOfBirth);
+            editor.putString("#"+emailTmp, emailTmp);
+            editor.putString(emailTmp,password.getText().toString());
+            editor.commit();
 
-                Toast.makeText(getApplicationContext(), "Registration Successful", Toast.LENGTH_SHORT).show();
-                finish();
-            }catch (Exception e){
-                System.out.println(e);
-            }
+            Toast.makeText(getApplicationContext(), "Registration Successful", Toast.LENGTH_SHORT).show();
+            finish();
 
         }
 

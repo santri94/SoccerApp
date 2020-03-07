@@ -3,6 +3,7 @@ package com.example.soccerapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void Login(View view) throws Exception {
+    public void Login(View view){
         EditText username = (EditText) findViewById(R.id.email);
         EditText pass = (EditText) findViewById(R.id.password);
 
@@ -33,32 +34,31 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please Enter Email and password", Toast.LENGTH_SHORT).show();
         }
         else {
-            try{
 
+            // Compare username and pass with the ones on your Preferences
+            SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+            SharedPreferences.Editor editor = pref.edit();
 
-                // Compare username and pass with the ones on your DB
-                Database.DatabaseFunctions myDatabase = new Database.DatabaseFunctions(); // connect to database
+            String email;
+            String password;
 
-                // returns a User object if there was a match if not returns a null
-                User currentUser = myDatabase.GetUser(username.getText().toString(), pass.getText().toString());
-
-                // User login Successful
-                if (currentUser != null) {
-                    username.setText(""); //clear email field
-                    pass.setText(""); // clear password field
-                    startActivity(new Intent(MainActivity.this, WelcomeActivity.class ));
-
-                }
-                // User login failed
-                else{
-                    Toast.makeText(getApplicationContext(), "Wrong Email or password", Toast.LENGTH_SHORT).show();
-                }
+            email = pref.getString("#"+username.getText().toString(),null);
+            password = pref.getString(username.getText().toString(),null);
 
 
 
-            } catch (Exception ex) {
-                System.out.println(ex);
+            // User login Successful
+            if (email.equals(username.getText().toString()) && password.equals(pass.getText().toString())) {
+                username.setText(""); //clear email field
+                pass.setText(""); // clear password field
+                startActivity(new Intent(MainActivity.this, WelcomeActivity.class ));
+
             }
+            // User login failed
+            else{
+                Toast.makeText(getApplicationContext(), "Wrong Email or password", Toast.LENGTH_SHORT).show();
+            }
+
 
 
         }
