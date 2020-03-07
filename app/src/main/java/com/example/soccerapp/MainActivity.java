@@ -45,19 +45,27 @@ public class MainActivity extends AppCompatActivity {
             email = pref.getString("#"+username.getText().toString(),null);
             password = pref.getString(username.getText().toString(),null);
 
-
-
-            // User login Successful
-            if (email.equals(username.getText().toString()) && password.equals(pass.getText().toString())) {
-                username.setText(""); //clear email field
-                pass.setText(""); // clear password field
-                startActivity(new Intent(MainActivity.this, WelcomeActivity.class ));
-
+            //if they are submitting a user that is not registered
+            if (email == null || password == null){
+                Toast.makeText(getApplicationContext(), "Make sure you register FIRST", Toast.LENGTH_SHORT).show();
             }
-            // User login failed
             else{
-                Toast.makeText(getApplicationContext(), "Wrong Email or password", Toast.LENGTH_SHORT).show();
+                // User login Successful
+                if (email.equals(username.getText().toString()) && password.equals(pass.getText().toString())) {
+                    username.setText(""); //clear email field
+                    pass.setText(""); // clear password field
+                    //startActivity(new Intent(MainActivity.this, WelcomeActivity.class ));
+                    Intent intent=new Intent(MainActivity.this,WelcomeActivity.class);
+                    intent.putExtra("email",email);
+                    startActivity(intent);
+
+                }
+                // User login failed
+                else{
+                    Toast.makeText(getApplicationContext(), "Wrong Email or password", Toast.LENGTH_SHORT).show();
+                }
             }
+
 
 
 
