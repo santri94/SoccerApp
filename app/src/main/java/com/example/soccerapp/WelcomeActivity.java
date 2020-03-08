@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 public class WelcomeActivity extends AppCompatActivity {
 
+    String email;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,9 +25,16 @@ public class WelcomeActivity extends AppCompatActivity {
 
 
         Bundle extras = getIntent().getExtras();
-        String email = extras.getString("email");
+        email = extras.getString("email");
         username.setText("Hi: "+email);
 
+    }
+
+    public void PlayGame(View view){
+
+        Intent intent=new Intent(WelcomeActivity.this,QuizFirstPage.class);
+        intent.putExtra("email",email);
+        startActivity(intent);
     }
 
     public void LogOut(View view){

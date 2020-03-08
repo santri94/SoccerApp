@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuizFirstPage">
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="317dp"
+        android:layout_height="193dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:gravity="center"
+        android:text="What teams played the 2018 world cup final? \n(Pick 2 Teams)"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColorLink="#00BD5656"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="417dp"
+        android:layout_height="314dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8">
+
+        <CheckBox
+            android:id="@+id/Germany"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="Germany" />
+
+        <CheckBox
+            android:id="@+id/Croatia"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="Croatia" />
+
+        <CheckBox
+            android:id="@+id/Brazil"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="Brazil" />
+
+        <CheckBox
+            android:id="@+id/France"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="France" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:text="" />
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="171dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_button"
+            android:gravity="center"
+            android:onClick="FirstQuestion"
+            android:layout_gravity="center"
+            android:text="Next"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

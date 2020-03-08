@@ -28,10 +28,26 @@
         android:layout_marginLeft="295dp"
         android:layout_marginBottom="18dp"
         android:text="Log Out"
+        android:textColor="#ffffff"
         android:background="@drawable/round_button"
         android:onClick="LogOut"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="140dp"
+        android:layout_height="47dp"
+        android:background="@drawable/round_button"
+        android:onClick="PlayGame"
+        android:text="START GAME"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hi"
+        app:layout_constraintVertical_bias="0.247" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
