@@ -37,6 +37,13 @@ public class WelcomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void ShowHistory(View view){
+
+        Intent intent=new Intent(WelcomeActivity.this,HistoryPage.class);
+        intent.putExtra("email",email);
+        startActivity(intent);
+    }
+
     public void LogOut(View view){
         finish();
 

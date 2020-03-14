@@ -13,9 +13,6 @@ import java.util.ArrayList;
 public class ScorePage extends AppCompatActivity {
     TextView final_score;
 
-    //Need this to save final Score for each user
-    //SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
-    //SharedPreferences.Editor editor = pref.edit();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,13 +51,36 @@ public class ScorePage extends AppCompatActivity {
             counter += 1;
         }
 
+        //made score a string
+        String newScore = String.valueOf(counter);
+        final_score.setText("Final Score : " + newScore);
+
+        //Need this to save final Score for each user
+
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+        SharedPreferences.Editor editor = pref.edit();
 
 
         //Saving Final Score to SharedPreferences
-        final_score.setText("Final Score \n " + counter);
+        // First Check if there is a score for this user already in SharedPrerences
+        // if there is one, Get rid of it.
+        String score = pref.getString("Score"+answersAndEmail.get(0),null);
+        if(score != null){ //Meaning there is an older value, delete it.
+            editor.remove("Score"+answersAndEmail.get(0));
+            editor.commit();
+            // then store new score
+            editor.putString("Score"+answersAndEmail.get(0), newScore); //answersAndEmail.get(0) will contain email for each user
+            editor.commit();
+        }
+        else {
+            editor.putString("Score"+answersAndEmail.get(0), newScore); //answersAndEmail.get(0) will contain email for each user
+            editor.commit();
+        }
 
-        //editor.putInt("Score"+answersAndEmail.get(0), counter); //answersAndEmail.get(0) will contain email for each user
-        //.commit();
+
+
+
+
 
         //--------------------------------------------------------------------------------------
     }
