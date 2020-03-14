@@ -1,9 +1,12 @@
 package com.example.soccerapp;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.Toast;
@@ -61,10 +64,33 @@ public class QuizFirstPage extends AppCompatActivity {
         //      Need to create an alert Dialog to confirm the answer
         //           then launch the intent
         //---------------------------------------------------------------------------
-        Intent intent=new Intent(QuizFirstPage.this,QuizSecondPage.class);
-        intent.putExtra("answersAndEmail",answersAndEmail);
-        startActivity(intent);
-        //---------------------------------------------------------------------------
+        new AlertDialog.Builder(this, R.style.CustomDialogTheme)
+                .setTitle("Submit Answer?")
+                .setMessage(result)
+                .setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //---------------------------------------------------------------------------
+                        Intent intent=new Intent(QuizFirstPage.this,QuizSecondPage.class);
+                        intent.putExtra("answersAndEmail",answersAndEmail);
+                        startActivity(intent);
+                        //---------------------------------------------------------------------------
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Log.d("MainActivity", "Aborting mission...");
+                    }
+                })
+                .show();
+
+
+
+
+
+
+
 
     }
 }
