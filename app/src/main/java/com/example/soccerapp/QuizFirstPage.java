@@ -74,18 +74,19 @@ public class QuizFirstPage extends AppCompatActivity {
                         Intent intent=new Intent(QuizFirstPage.this,QuizSecondPage.class);
                         intent.putExtra("answersAndEmail",answersAndEmail);
                         startActivity(intent);
+                        finish();
                         //---------------------------------------------------------------------------
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Log.d("MainActivity", "Aborting mission...");
+                        // No Action
                     }
                 })
                 .show();
 
-
+        //---------------------------------------------------------------------------
 
 
 

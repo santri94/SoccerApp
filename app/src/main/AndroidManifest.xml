@@ -11,7 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".QuizSecondPage"></activity>
+        <activity android:name=".ScorePage"></activity>
+        <activity android:name=".QuizFifthPage" />
+        <activity android:name=".QuizFourthPage" />
+        <activity android:name=".QuizThirdPage" />
+        <activity android:name=".QuizSecondPage" />
         <activity android:name=".QuizFirstPage" />
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".RegisterActivity" />

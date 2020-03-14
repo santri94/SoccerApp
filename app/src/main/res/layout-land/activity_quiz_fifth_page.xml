@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuizFifthPage">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="568dp"
+                android:layout_height="193dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="150dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginRight="50dp"
+                android:gravity="center"
+                android:text="Where will be the Champions League final in 2020?"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColorLink="#00BD5656" />
+
+            <RadioGroup
+                android:id="@+id/rdGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtView"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/Madrid_Spain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="100dp"
+                    android:padding="10dp"
+                    android:text="Madrid, Spain" />
+
+                <RadioButton
+                    android:id="@+id/Istanbul_Turkey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="100dp"
+                    android:padding="10dp"
+                    android:text="Istanbul, Turkey" />
+
+                <RadioButton
+                    android:id="@+id/Kiev_Ukraine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="100dp"
+                    android:padding="10dp"
+                    android:text="Kiev, Ukraine" />
+
+                <RadioButton
+                    android:id="@+id/Rome_Italy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="100dp"
+                    android:padding="10dp"
+                    android:text="Rome, Italy" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:text="" />
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="171dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/round_button"
+                android:gravity="center"
+                android:onClick="FifthQuestion"
+                android:text="Next"
+                android:textColor="#ffffff"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

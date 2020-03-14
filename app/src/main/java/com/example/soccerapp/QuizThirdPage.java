@@ -6,29 +6,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class QuizSecondPage extends AppCompatActivity {
+public class QuizThirdPage extends AppCompatActivity {
 
-    RadioButton harry, luka, kylian, cristiano;
+    RadioButton realmadrid, liverpool, barcelona, juventus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quiz_second_page);
-        harry = (RadioButton)findViewById(R.id.HarryKane);
-        luka = (RadioButton)findViewById(R.id.LukaModric);
-        kylian = (RadioButton)findViewById(R.id.KylianMbappe);
-        cristiano = (RadioButton)findViewById(R.id.CristianoRonaldo);
+        setContentView(R.layout.activity_quiz_third_page);
+        realmadrid = (RadioButton)findViewById(R.id.RealMadrid);
+        liverpool = (RadioButton)findViewById(R.id.Liverpool);
+        barcelona = (RadioButton)findViewById(R.id.Barcelona);
+        juventus = (RadioButton)findViewById(R.id.Juventus);
     }
 
-    public void SecondQuestion(View view){
-
+    public void ThirdQuestion(View view)
+    {
         //----------------------------------------------------------------------------------------
         //                              - Get selected answer
         //                              - Get array of email and answers
@@ -36,17 +35,17 @@ public class QuizSecondPage extends AppCompatActivity {
         //----------------------------------------------------------------------------------------
 
         String answerSelected = "";
-        if (harry.isChecked()){
-            answerSelected = "Harry Kane";
+        if (realmadrid.isChecked()){
+            answerSelected = "Real Madrid";
         }
-        if (luka.isChecked()){
-            answerSelected = "Luka Modric";
+        if (liverpool.isChecked()){
+            answerSelected = "Liverpool";
         }
-        if (kylian.isChecked()){
-            answerSelected = "Kylian Mbappe";
+        if (barcelona.isChecked()){
+            answerSelected = "Barcelona";
         }
-        if (cristiano.isChecked()){
-            answerSelected = "Cristiano Ronaldo";
+        if (juventus.isChecked()){
+            answerSelected = "Juventus";
         }
 
 
@@ -59,6 +58,7 @@ public class QuizSecondPage extends AppCompatActivity {
         //------------------------------------------------------------------------------------------
         //                      Alert Dialog to confirm the answer
         //------------------------------------------------------------------------------------------
+
         new AlertDialog.Builder(this, R.style.CustomDialogTheme)
                 .setTitle("Submit Answer?")
                 .setMessage(answerSelected)
@@ -66,7 +66,7 @@ public class QuizSecondPage extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //---------------------------------------------------------------------------
-                        Intent intent=new Intent(QuizSecondPage.this,QuizThirdPage.class);
+                        Intent intent=new Intent(QuizThirdPage.this,QuizFourthPage.class);
                         intent.putExtra("answersAndEmail",answersAndEmail);
                         startActivity(intent);
                         finish();
@@ -80,11 +80,12 @@ public class QuizSecondPage extends AppCompatActivity {
                     }
                 })
                 .show();
+
+
         //------------------------------------------------------------------------------------------
 
 
-        //Toast.makeText(getApplicationContext(), "Answer :" + answersAndEmail.get(1), Toast.LENGTH_SHORT).show();
-
+        //Toast.makeText(getApplicationContext(), "Answer :" + answersAndEmail.get(2), Toast.LENGTH_SHORT).show();
 
     }
 }
